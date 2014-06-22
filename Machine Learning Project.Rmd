@@ -40,23 +40,23 @@ I first tried CART analysis on this but it didn't do a very good job so I left t
 I heard that RandomForest is good at predicting so I am going to try to use the rf option in train (from the caret package).  Professors mentioned that Random Forest is used in many competitions so I thought that would be a good fit for this since accuracy was key and explaining the exact model was not the main goal of this.
 
 ```{r}
-modFitRF <- train(classe~.,methods="rf",data=training)
-print(modFitRF$finalModel)
+#modFitRF <- train(classe~.,methods="rf",data#=training)
+#print(modFitRF$finalModel)
 
 ```
 Now that we have the RandomForest model (modFitRF), we should check to see how it did at predicting the training and testing sets
 
 ```{r}
-table(training$classse,predict(modFitRF,training))
-table(testing$classe, predict(modFitRF,testing))
-predRF.tr <- predict(modFitRF,training)
-accuracyRF.tr = sum(predRF.tr ==training$classe)/length(predRF.tr)
-accuracyRF.tr
-predRF.te <- predict(modFitRF,testing)
-accuracyRF.te = sum(predRF.te ==testing$classe)/length(predRF.te)
-accuracyRF.te
+#table(training$classse,predict(modFitRF,training))
+#table(testing$classe, predict(modFitRF,testing))
+#predRF.tr <- predict(modFitRF,training)
+#accuracyRF.tr = sum(predRF.tr ==training$classe)/length(predRF.tr)
+#accuracyRF.tr
+#predRF.te <- predict(modFitRF,testing)
+#accuracyRF.te = sum(predRF.te ==testing$classe)/length(predRF.te)
+#accuracyRF.te
 ```
-
+Due to time contraints, the above code was not included when knitting because it took too long and it was not the one I ended up using.  But, while initially doing the analysis I did do the code above along with a CART analysis.
 
 ## Using Cross Validation with Random Forest model
 The assignment asked to use Cross Validation so this is below using Random Forest with Cross Validation.  I am using a K=5 to add some accuracy but to not have it take forever on my computer.  That means we use 80% of the data each time so that seems reasonable to me. Plus, I already split out 70% into my training set so I have a set to test the error on after coming up with my model.
